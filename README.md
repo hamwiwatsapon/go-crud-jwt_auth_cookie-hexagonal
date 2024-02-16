@@ -4,17 +4,17 @@
 
 ### user
 
-1.POST   /register
-2.POST   /login
-3.PUT    /user/edit
-4.DELETE /user/delete
+- POST   /register
+- POST   /login
+- PUT    /user/edit
+- DELETE /user/delete
 
 ### book
 
-1.GET    /books
-2.GET    /books/:name
-3.PUT    /books/:id
-4.DELETE /books/:id
+- GET    /books
+- GET    /books/:name
+- PUT    /books/:id
+- DELETE /books/:id
 
 ## About
 
