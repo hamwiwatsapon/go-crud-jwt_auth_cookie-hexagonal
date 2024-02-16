@@ -62,34 +62,24 @@ func main() {
 	userHandler := adapters.NewHttpUserHandler(userService)
 	bookHandler := adapters.NewHttpBookHandler(bookService)
 
+	// User Service
 	app.Post("/register", userHandler.Register)
-
 	app.Post("/login", userHandler.Authentication)
-
 	app.Use("/user", authRequired)
-
 	app.Put("/user/edit", userHandler.Edit)
-
 	app.Delete("/user/delete", userHandler.Delete)
 
+	// Book Service
 	app.Use("/book", authRequired)
-
 	app.Post("/books", bookHandler.NewBook)
-
 	app.Get("/books", bookHandler.ReadBooks)
-
 	app.Get("/books/:name", bookHandler.ReadNameBook)
-
 	app.Put("/books/:id", bookHandler.UpdateBook)
-
 	app.Delete("/books/:id", bookHandler.DeleteBook)
-
 	app.Post("/books/author", bookHandler.NewAuthor)
-
 	app.Post("/books/publisher", bookHandler.NewPublisher)
 
 	db.AutoMigrate(&core.User{}, &core.Book{}, &core.Author{}, &core.AuthorBook{}, &core.Genre{}, &core.Publisher{})
-
 	app.Listen(":8000")
 }
 
