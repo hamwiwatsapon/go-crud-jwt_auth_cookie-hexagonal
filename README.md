@@ -4,10 +4,10 @@
 
 ### user
 
-- POST   /register      create new user
-- POST   /login
-- PUT    /user/edit
-- DELETE /user/delete
+- POST    /register         create new user
+- POST    /login            login method
+- PUT     /user/edit        update user
+- DELETE  /user/delete      delete user
 
 ### book
 
