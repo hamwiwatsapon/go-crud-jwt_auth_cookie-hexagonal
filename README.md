@@ -1,9 +1,26 @@
 # PRACTICE GO Hexagonal Architecture
 
-## CRUD
+## Request Implement
 
-Basic CRUD using GORM.
+user
+  -POST   /register
+  -POST   /login
+  -PUT    /user/edit
+  -DELETE /user/delete
 
-## HTTP
+book
+  -GET    /books
+  -GET    /books/:name
+  -PUT    /books/:id
+  -DELETE /books/:id
 
-Http request using fiber.
+## About
+
+DB: postgresql
+ORM: gorm
+HTTP: fiber
+Tool: docker
+
+### HOW TO START
+
+docker-compose up -d
