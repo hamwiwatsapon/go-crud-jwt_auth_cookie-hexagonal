@@ -84,6 +84,10 @@ func main() {
 
 	app.Delete("/books/:id", bookHandler.DeleteBook)
 
+	app.Post("/books/author", bookHandler.NewAuthor)
+
+	app.Post("/books/publisher", bookHandler.NewPublisher)
+
 	db.AutoMigrate(&core.User{}, &core.Book{}, &core.Author{}, &core.AuthorBook{}, &core.Genre{}, &core.Publisher{})
 
 	app.Listen(":8000")

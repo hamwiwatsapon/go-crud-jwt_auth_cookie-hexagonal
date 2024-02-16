@@ -8,7 +8,3 @@ import (
 type GormBookStore struct {
 	db *gorm.DB
 }
-
-
-
-

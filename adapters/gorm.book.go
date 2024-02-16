@@ -66,3 +66,19 @@ func (r *GormBookStore) DeleteBook(bookId int) error {
 
 	return nil
 }
+
+// CreateAuthor implements core.BookRepository.
+func (r *GormBookStore) CreateAuthor(author core.Author) error {
+	if result := r.db.Create(&author); result.Error != nil {
+		return result.Error
+	}
+	return nil
+}
+
+// CreatePublisher implements core.BookRepository.
+func (r *GormBookStore) CreatePublisher(publisher core.Publisher) error {
+	if result := r.db.Create(&publisher); result.Error != nil {
+		return result.Error
+	}
+	return nil
+}

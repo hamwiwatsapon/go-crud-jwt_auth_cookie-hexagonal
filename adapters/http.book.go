@@ -95,3 +95,37 @@ func (h *HttpBookHandler) DeleteBook(c *fiber.Ctx) error {
 	}
 	return c.SendStatus(fiber.StatusAccepted)
 }
+
+func (h *HttpBookHandler) NewAuthor(c *fiber.Ctx) error {
+	var author core.Author
+	if err := c.BodyParser(&author); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	if err := h.service.NewAuthor(author); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	return c.Status(fiber.StatusCreated).JSON(author)
+}
+
+func (h *HttpBookHandler) NewPublisher(c *fiber.Ctx) error {
+	var publisher core.Publisher
+	if err := c.BodyParser(&publisher); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	if err := h.service.NewPublisher(publisher); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	return c.Status(fiber.StatusCreated).JSON(publisher)
+}

@@ -7,6 +7,8 @@ import (
 
 type BookService interface {
 	NewBook(book Book) error
+	NewAuthor(author Author) error
+	NewPublisher(publisher Publisher) error
 	ReadBooks() ([]Book, error)
 	ReadNameBook(bookName string) ([]Book, error)
 	UpdateBook(bookId int, book Book) error
@@ -17,9 +19,35 @@ type BookServiceImpl struct {
 	repo BookRepository
 }
 
+// NewAuthor implements BookService.
+func (s *BookServiceImpl) NewAuthor(author Author) error {
+	if author.Name == "" {
+		return errors.New("name of author cant be empty string")
+	}
+
+	if err := s.repo.CreateAuthor(author); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// NewPublisher implements BookService.
+func (s *BookServiceImpl) NewPublisher(publisher Publisher) error {
+	if publisher.Name == "" {
+		return errors.New("name of publisher cant be empty string")
+	}
+
+	if err := s.repo.CreatePublisher(publisher); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (s *BookServiceImpl) NewBook(book Book) error {
 	if book.Name == "" {
-		return errors.New("name cant be empty string")
+		return errors.New("name of book cant be empty string")
 	}
 
 	if err := s.repo.CreateBook(book); err != nil {
