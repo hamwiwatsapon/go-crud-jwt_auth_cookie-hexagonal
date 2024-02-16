@@ -2,17 +2,19 @@
 
 ## Request Implement
 
-user
-  -POST   /register
-  -POST   /login
-  -PUT    /user/edit
-  -DELETE /user/delete
+### user
 
-book
-  -GET    /books
-  -GET    /books/:name
-  -PUT    /books/:id
-  -DELETE /books/:id
+1.POST   /register
+2.POST   /login
+3.PUT    /user/edit
+4.DELETE /user/delete
+
+### book
+
+1.GET    /books
+2.GET    /books/:name
+3.PUT    /books/:id
+4.DELETE /books/:id
 
 ## About
 
