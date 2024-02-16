@@ -4,24 +4,26 @@
 
 ### user
 
-- POST   /register
+- POST   /register      create new user
 - POST   /login
 - PUT    /user/edit
 - DELETE /user/delete
 
 ### book
 
-- GET    /books
-- GET    /books/:name
-- PUT    /books/:id
-- DELETE /books/:id
+- GET     /books            get all book
+- GET     /books/:name      get all same book
+- POST    /books            create new book
+- POST    /books/author     create new author
+- POST    /books/publisher  create new publisher
+- PUT     /books/:id        update book by id
+- DELETE  /books/:id        delete book by id
 
 ## About
 
-DB: postgresql
-ORM: gorm
-HTTP: fiber
-Tool: docker
+- DB: postgresql
+- ORM: gorm
+- HTTP: fiber
 
 ### HOW TO START
 
