@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -82,7 +81,6 @@ func TestCreateUser(t *testing.T) {
 			Password: "test1234",
 		})
 
-		fmt.Println(err.Error())
 		assert.Error(t, err)
 		assert.Equal(t, "mail: missing '@' or angle-addr", err.Error())
 	})
