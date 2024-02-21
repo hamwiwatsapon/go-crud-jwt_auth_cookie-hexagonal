@@ -63,7 +63,7 @@ func TestCreateUser(t *testing.T) {
 		})
 
 		assert.Error(t, err)
-		assert.Equal(t, "password is equal or more than 8 characters", err.Error())
+		assert.Equal(t, "password less than 8 characters", err.Error())
 	})
 
 	t.Run("error email missing @", func(t *testing.T) {
@@ -85,7 +85,7 @@ func TestCreateUser(t *testing.T) {
 		assert.Equal(t, "mail: missing '@' or angle-addr", err.Error())
 	})
 
-	t.Run("error user empty", func(t *testing.T) {
+	t.Run("error user length", func(t *testing.T) {
 		repo := &mockUserRepo{
 			createUserFunc: func(user User) error {
 				return nil
@@ -101,6 +101,6 @@ func TestCreateUser(t *testing.T) {
 		})
 
 		assert.Error(t, err)
-		assert.Equal(t, "username cant be empty and equal or more than 8 characters", err.Error())
+		assert.Equal(t, "username less than 8 characters", err.Error())
 	})
 }

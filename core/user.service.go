@@ -24,7 +24,7 @@ type userServiceImpl struct {
 
 func (s *userServiceImpl) Register(user User) error {
 	if len(user.Password) < 8 {
-		return errors.New("password is equal or more than 8 characters")
+		return errors.New("password less than 8 characters")
 	}
 
 	if _, err := mail.ParseAddress(user.Email); err != nil {
@@ -32,7 +32,7 @@ func (s *userServiceImpl) Register(user User) error {
 	}
 
 	if user.Username == "" || len(user.Username) < 8 {
-		return errors.New("username cant be empty and equal or more than 8 characters")
+		return errors.New("username less than 8 characters")
 	}
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)

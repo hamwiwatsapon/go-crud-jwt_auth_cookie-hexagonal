@@ -63,9 +63,33 @@ func TestRegisterUserHandler(t *testing.T) {
 	})
 
 	t.Run("fail user register (password less than 8)", func(t *testing.T) {
-		mockService.On("Register", mock.AnythingOfType("core.User")).Return(errors.New("password is equal or more than 8 characters"))
+		mockService.On("Register", mock.AnythingOfType("core.User")).Return(errors.New("password less than 8 characters"))
 
 		req := httptest.NewRequest("POST", registerUrl, bytes.NewBufferString(`{"username": "test_test","email":"test@test.com","password":"test12"}`))
+		req.Header.Set("Content-Type", "application/json")
+		resp, err := app.Test(req)
+
+		assert.NoError(t, err)
+		assert.Equal(t, fiber.StatusCreated, resp.StatusCode)
+		mockService.AssertExpectations(t)
+	})
+
+	t.Run("fail user register (email missing @)", func(t *testing.T) {
+		mockService.On("Register", mock.AnythingOfType("core.User")).Return(errors.New("mail: missing '@' or angle-addr"))
+
+		req := httptest.NewRequest("POST", registerUrl, bytes.NewBufferString(`{"username": "test_test","email":"testtest.com","password":"test1234"}`))
+		req.Header.Set("Content-Type", "application/json")
+		resp, err := app.Test(req)
+
+		assert.NoError(t, err)
+		assert.Equal(t, fiber.StatusCreated, resp.StatusCode)
+		mockService.AssertExpectations(t)
+	})
+
+	t.Run("fail user register (username less than 8 characters)", func(t *testing.T) {
+		mockService.On("Register", mock.AnythingOfType("core.User")).Return(errors.New("username less than 8 characters"))
+
+		req := httptest.NewRequest("POST", registerUrl, bytes.NewBufferString(`{"username": "test_","email":"test@test.com","password":"test1234"}`))
 		req.Header.Set("Content-Type", "application/json")
 		resp, err := app.Test(req)
 
