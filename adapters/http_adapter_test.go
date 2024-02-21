@@ -62,7 +62,7 @@ func TestRegisterUserHandler(t *testing.T) {
 		mockService.AssertExpectations(t)
 	})
 
-	t.Run("fail user register (password total less than 8)", func(t *testing.T) {
+	t.Run("fail user register (password less than 8)", func(t *testing.T) {
 		mockService.On("Register", mock.AnythingOfType("core.User")).Return(errors.New("password is equal or more than 8 characters"))
 
 		req := httptest.NewRequest("POST", registerUrl, bytes.NewBufferString(`{"username": "test_test","email":"test@test.com","password":"test12"}`))
