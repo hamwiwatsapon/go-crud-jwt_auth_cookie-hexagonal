@@ -5,23 +5,23 @@
 ### structure
 
 - go-crud-jwt_auth_cookie-hexagonal
-  |- main.go
-  |- adapters
-     |-gorm_adapter_test.go
-     |-gorm.book.go
-     |-gorm.go
-     |-gorm.user.go
-     |-http_adapter_test.go
-     |-http.book.go
-     |-http.user.go
-  |- core
-     |- book.repository.go
-     |- book.service.go
-     |- books.go
-     |- user_service.test.go
-     |- user.go
-     |- user.repository.go
-     |- user.service.go
+  - main.go
+  - adapters
+     -gorm_adapter_test.go
+     -gorm.book.go
+     -gorm.go
+     -gorm.user.go
+     -http_adapter_test.go
+     -http.book.go
+     -http.user.go
+  - core
+     - book.repository.go
+     - book.service.go
+     - books.go
+     - user_service.test.go
+     - user.go
+     - user.repository.go
+     - user.service.go
 
 ### user
 
