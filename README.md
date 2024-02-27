@@ -7,13 +7,13 @@
 - go-crud-jwt_auth_cookie-hexagonal
   - main.go
   - adapters
-     -gorm_adapter_test.go
-     -gorm.book.go
-     -gorm.go
-     -gorm.user.go
-     -http_adapter_test.go
-     -http.book.go
-     -http.user.go
+     - gorm_adapter_test.go
+     - gorm.book.go
+     - gorm.go
+     - gorm.user.go
+     - http_adapter_test.go
+     - http.book.go
+     - http.user.go
   - core
      - book.repository.go
      - book.service.go
